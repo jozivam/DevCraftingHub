@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relorio Digital</title>
+    <link rel="stylesheet" href="styler.css">
+</head>
+<body>
+    <div class="relogio">
+        <p id="data"></p>
+        <p id="tempo"></p>
+    </div>
+    <Script>
+        const SEMANA = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
+
+        function atualizaTempo(){
+            var now = new Date();
+
+            Document.getElementById('tempo').innerText= zeroPadding(now.getHours(), 2) + ":" + zeroPadding(now.getMinutes(), 2)+ ":" + zeroPadding(now.getSeconds(), 2);
+
+            Document.getElementById('data').innerText= now.getFullYear() + "-" + zeroPadding(now.getDate()+ 1, 2) + "-" + zeroPadding(now.getMonth()+ 1, 2)+" "+SEMANA[now.getDay()];
+        }
+        atualizaTempo();
+        setInterval(atualizaTempo, 1000);
+
+        function zeroPadding(num, digit){
+            return String(num).padStart(digit, '0');
+        }
+    </Script>
+</body>
+</html>
